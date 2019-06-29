@@ -53,6 +53,7 @@ Thumbs.db
 /app/**/*.js.map
 
 # dependencies
+<<<<<<< HEAD
 */node_modules
 */bower_components
 
