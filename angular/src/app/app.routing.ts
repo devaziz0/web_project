@@ -20,7 +20,7 @@ const routes: Routes =[
     { path: 'login',          component: LoginComponent },
     { path: 'movies',          component: MoviesComponent },
     { path: 'add',          component: AddmovieComponent },
-    { path: 'edit',          component: EditmovieComponent },
+    { path: 'edit/:id',          component: EditmovieComponent },
     { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

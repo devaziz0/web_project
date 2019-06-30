@@ -1,9 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
+import {ReactiveFormsModule, FormsModule} from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { SignupComponent } from './signup/signup.component';
@@ -35,11 +37,15 @@ import { EditmovieComponent } from './editmovie/editmovie.component';
   imports: [
     BrowserModule,
     NgbModule.forRoot(),
-    FormsModule,
     RouterModule,
     AppRoutingModule,
-    HomeModule
+    HomeModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpModule,
+    HttpClientModule
   ],
+
   providers: [],
   bootstrap: [AppComponent]
 })
