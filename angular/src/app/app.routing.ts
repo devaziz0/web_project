@@ -8,13 +8,19 @@ import { ProfileComponent } from './profile/profile.component';
 import { SignupComponent } from './signup/signup.component';
 import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './login/login.component';
+import { MoviesComponent } from './movies/movies.component';
+import { AddmovieComponent } from './addmovie/addmovie.component';
+import { EditmovieComponent } from './editmovie/editmovie.component';
 
 const routes: Routes =[
-    { path: 'home',             component: HomeComponent },
+    { path: 'home',             component: MoviesComponent },
     { path: 'user-profile',     component: ProfileComponent },
     { path: 'register',           component: SignupComponent },
     { path: 'landing',          component: LandingComponent },
     { path: 'login',          component: LoginComponent },
+    { path: 'movies',          component: MoviesComponent },
+    { path: 'add',          component: AddmovieComponent },
+    { path: 'edit',          component: EditmovieComponent },
     { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 
