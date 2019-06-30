@@ -25,16 +25,16 @@
   </div>
   <div class="row">
   	<div class="col-md-6 text-left col-md-4 ml-auto mr-auto">
-      <form action="edit" method="post">
+      <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
 	      <div class="form-group">
-	          <input type="text" value="" placeholder="Title" class="form-control" name="title" />
+          <input type="text" value="" placeholder="Title" class="form-control" formControlName="title"/>
 	      </div>
 	      <div class="form-group">
 
-	          <input type="text" value="" placeholder="Category" class="form-control" name="category" />
+	          <input type="text" value="" placeholder="Category" class="form-control" name="category" formControlName="category" />
 	      </div>
 	      <div class="form-group">
-	          <input type="text" value="" placeholder="Tag" class="form-control" name="tag" />
+	          <input type="text" value="" placeholder="Tag" class="form-control" name="tag" formControlName="tag" />
 		</div>
 		<div class="row">
 			<div class="col-md-4 text-left col-md-4 ml-auto mr-auto">
