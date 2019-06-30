@@ -37,13 +37,13 @@
 	      </thead>
 	      <tbody>
 	        <tr *ngFor="let game of games">
-	          <th scope="row">{{game.game_id}}</th>
+	          <th scope="row">{{game.movie_id}}</th>
 	          <td>{{game.title}}</td>
-	          <td>{{game.platform}}</td>
-	          <td>{{game.status}}</td>
+	          <td>{{game.category}}</td>
+	          <td>{{game.tag}}</td>
 	          <td>
-	            <a href="/edit/{{game.game_id}}" type="button" class="btn btn-warning btn-sm mt-0">Edit</a>
-	            <button type="button" class="btn btn-danger btn-sm mt-0">Delete</button>
+	            <a href="/edit/{{game.movie_id}}" type="button" class="btn btn-warning btn-sm mt-0">Edit</a>
+	            <button type="button" class="btn btn-danger btn-sm mt-0" (click)= "deleteMovie(game.movie_id)" >Delete</button>
 	          </td>
 	        </tr>
 	        <tr>

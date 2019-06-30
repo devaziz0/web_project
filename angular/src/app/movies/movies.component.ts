@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {  Component, OnInit, Inject, Renderer, ElementRef, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
+import { ApiService } from '../api.service';
+
 
 @Component({
   selector: 'app-movies',
@@ -7,9 +10,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MoviesComponent implements OnInit {
 
-  constructor() { }
+  title = "My movies";
+  games = [];
 
-  ngOnInit() {
+  constructor(private apiService : ApiService, private router: Router,) {
+      this.fetch((data) => {
+      this.games = data;
+      console.log(this.games)
+      });    
   }
 
+  ngOnInit() {
+      let navbar = document.getElementsByTagName('app-navbar')[0].children[0];
+      navbar.classList.remove('navbar-transparent');
+  }
+
+  fetch(cb) {
+      let games;
+        this.apiService.getMovies()
+                       .subscribe((value) =>{
+                       games = value;
+                       cb(games);
+                     });
+  }
+
+  async delete(id) {
+    await this.apiService.deleteMovie(parseInt(id))
+                     .subscribe((value) =>{
+                       console.log(value)
+                     this.router.navigate(['/movies']);
+                   });
+  }
+
+  deleteMovie(id) {    
+    this.delete(parseInt(id))
+  }
 }
