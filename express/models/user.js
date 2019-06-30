@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var db = mongoose.connect("mongodb://localhost:27017/db");
+var db = mongoose.connect("mongodb://localhost:27017/movieDB");
 
 var userSchema = mongoose.Schema({  
         first_name: String,

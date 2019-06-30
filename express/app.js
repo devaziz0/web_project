@@ -1,7 +1,7 @@
 var express = require("express");
 var app = express();
 var User = require('./models/user');
-var Game = require('./models/game')
+var Game = require('./models/movie')
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -65,28 +65,28 @@ app.delete('/user/:login', (req, res) => {
     
 })
 
-app.get('/game', (req, res) => {
+app.get('/movie', (req, res) => {
     
     Game.find()
-    .then ((games) =>
-        res.json(games))
+    .then ((movies) =>
+        res.json(movies))
     
 
 })
 
-app.get('/game/count', (req, res) => {
+app.get('/movie/count', (req, res) => {
 
     Game.find()
-    .then ((games) => res.json({"count" : games.length}))
+    .then ((movies) => res.json({"count" : movies.length}))
 
 })
 
-app.get('/game/:id', (req, res) => {
+app.get('/movie/:id', (req, res) => {
 
-    Game.find({'game_id': req.params.id })
-        .then((game, err) => {
+    Game.find({'movie_id': req.params.id })
+        .then((movie, err) => {
             err != null ? {} : 
-            res.json(game)
+            res.json(movie)
         }
         
     )
@@ -97,37 +97,37 @@ app.get('/game/:id', (req, res) => {
 
 })
 
-app.put('/game/:id', (req, res) => {
-    Game.findOne({'game_id' : req.params.id})
-        .then((game,err) => 
+app.put('/movie/:id', (req, res) => {
+    Game.findOne({'movie_id' : req.params.id})
+        .then((movie,err) => 
             Game.updateOne(
-                {'game_id' : game.game_id},
-                {'game_id' : (req.body.game_id == undefined || null || '') ? game.game_id : req.body.game_id,
-                 'title' : (req.body.title == undefined || null || '') ? game.title : req.body.title,
-                 'platform' : (req.body.platform == undefined || null || '') ? game.platform : req.body.platform,
-                 'status' : (req.body.status == undefined || null || '') ? game.status : req.body.status}
-                ).then((game) => res.json(game)))
+                {'movie_id' : movie.movie_id},
+                {'movie_id' : (req.body.movie_id == undefined || null || '') ? movie.movie_id : req.body.movie_id,
+                 'title' : (req.body.title == undefined || null || '') ? movie.title : req.body.title,
+                 'category' : (req.body.category == undefined || null || '') ? movie.category : req.body.category,
+                 'tag' : (req.body.tag == undefined || null || '') ? movie.tag : req.body.tag}
+                ).then((movie) => res.json(movie)))
             .catch((err) => 
                     err != null ? res.sendStatus(500) : {}
             )
 })
 
-app.delete('/game/:id', (req, res) => {
+app.delete('/movie/:id', (req, res) => {
 
-    Game.deleteOne({'game_id' : req.params.id})
-        .then((game,err) => err == null ? res.sendStatus(200):
+    Game.deleteOne({'movie_id' : req.params.id})
+        .then((movie,err) => err == null ? res.json({"done":200}):
         res.sendStatus(500)
 
         );
     
 })
 
-app.post('/game', (req, res) => {
-    var game = req.body;
+app.post('/movie', (req, res) => {
+    var movie = req.body;
 
-    Game.create(game)
-        .then((game) => 
-            res.send(game)
+    Game.create(movie)
+        .then((movie) => 
+            res.send(movie)
         );
     
 })
